@@ -26,13 +26,7 @@ class LoginActivity : AppCompatActivity() {
         val userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         // create a user if no user exists
-//        val user = userViewModel.getUserByFname("Shayan")
-//        user.observe(this){
-//            if (it == null)
-//            {
-//                userViewModel.addUser(User(null, "Shayan"))
-//            }
-//        }
+
 
 
         val fname = findViewById<EditText>(R.id.fname)
@@ -47,9 +41,15 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                 }
                 else{
-                    Toast.makeText(applicationContext, "User does not exist", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "User does not exist!", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        val createBtn = findViewById<Button>(R.id.createBtn)
+        createBtn.setOnClickListener{
+            userViewModel.addUser(User(null, fname.text.toString()))
+            Toast.makeText(applicationContext, "User created! Now you can log in!", Toast.LENGTH_SHORT).show()
         }
     }
 }
