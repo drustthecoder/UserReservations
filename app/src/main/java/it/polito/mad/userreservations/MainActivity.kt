@@ -51,5 +51,11 @@ class MainActivity : AppCompatActivity() {
             val playgroundsIntent = Intent(this, PlaygroundsActivity::class.java)
             startActivity(playgroundsIntent)
         }
+
+        val profileBtn = findViewById<Button>(R.id.profileBtn)
+        profileBtn.setOnClickListener(){
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
