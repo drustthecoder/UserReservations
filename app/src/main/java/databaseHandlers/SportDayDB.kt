@@ -5,11 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import dao.UserDao
+import dao.UserSportDao
 import tables.User
+import tables.UserSport
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, UserSport::class], version = 1)
 abstract class SportDayDB : RoomDatabase() {
     abstract fun userDao() : UserDao
+    abstract fun userSportDao() : UserSportDao
 
     companion object {
         @Volatile

@@ -9,14 +9,14 @@
     >
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/yourProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Your Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/profileFname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,19 +24,19 @@
         android:text="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
+
+
+    <Button
+        android:id="@+id/addSportBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Sport" />
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/yoursports"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Sports:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Sport" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
