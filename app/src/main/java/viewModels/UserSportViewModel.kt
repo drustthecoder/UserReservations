@@ -21,7 +21,7 @@ class UserSportViewModel(application: Application):AndroidViewModel(application)
         userSportRepo = UserSportRepo(userSportDao)
     }
 
-    fun addUserSport(user: User, userSport:UserSport){
+    fun addUserSport(userSport:UserSport){
         viewModelScope.launch(Dispatchers.IO) {
             userSportRepo.addUserSport(userSport)
         }

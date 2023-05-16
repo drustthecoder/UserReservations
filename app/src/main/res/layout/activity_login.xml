@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Full Name"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="Shayan" />
 
     <Button
         android:id="@+id/loginBtn"
