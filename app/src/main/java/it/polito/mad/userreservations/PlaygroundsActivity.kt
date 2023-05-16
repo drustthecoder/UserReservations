@@ -1,19 +1,26 @@
 package it.polito.mad.userreservations
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
 import dagger.hilt.android.AndroidEntryPoint
+import tables.User
+import viewModels.UserViewModel
 import javax.inject.Inject
 
 
@@ -55,6 +62,7 @@ class PlaygroundsViewModel: ViewModel(){
 
 @AndroidEntryPoint
 class PlaygroundsActivity : AppCompatActivity() {
+    private lateinit var uservm : UserViewModel
 //    val db = Room.databaseBuilder(
 //        applicationContext,
 //        AppDatabase::class.java, "database-name"
@@ -79,10 +87,25 @@ class PlaygroundsActivity : AppCompatActivity() {
     val vm by viewModels<PlaygroundsViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        uservm = ViewModelProvider(this)[UserViewModel::class.java]
+
+        var listOfUsers = uservm.getAllUsers()
+
         setContentView(R.layout.activity_playgrounds)
 
         val playgroundsRecyclerView = findViewById<RecyclerView>(R.id.playgroundsRecyclerView)
-        playgroundsRecyclerView.adapter = MyAdapter(playgroundsList)
+        var myAdapter = MyAdapter(this)
+        playgroundsRecyclerView.adapter = myAdapter
+//        var myAdapter = MyAdapter(this)
+        playgroundsRecyclerView.adapter = myAdapter
+
+        listOfUsers.observe(this, Observer {
+            myAdapter.setData(it!!)
+        })
+//        myAdaptoter.setData(listOfUsers.value!!)
+
+
         playgroundsRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
@@ -90,9 +113,20 @@ class PlaygroundsActivity : AppCompatActivity() {
 
 class MyViewHolder(v: View): RecyclerView.ViewHolder(v){
     val tv: TextView = v.findViewById<TextView>(R.id.playground_text)
+    val btn: Button = v.findViewById<Button>(R.id.btnInRV)
+
+    fun bind(user : User, activity: PlaygroundsActivity){
+        tv.text = user.fullName
+        btn.setOnClickListener{
+            val reservationsIntent = Intent(activity, MainActivity::class.java)
+            reservationsIntent.putExtra("name",user.fullName)
+            startActivity(activity, reservationsIntent, null)
+        }
+    }
 }
 
-class MyAdapter(val l: List<Playground>): RecyclerView.Adapter<MyViewHolder>(){
+class MyAdapter(val activity: PlaygroundsActivity): RecyclerView.Adapter<MyViewHolder>(){
+    private var listOfUsers = emptyList<User>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.playground_layout, parent, false)
@@ -100,11 +134,18 @@ class MyAdapter(val l: List<Playground>): RecyclerView.Adapter<MyViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return l.size
+        return listOfUsers.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.tv.text = l[position].name
+//        holder.tv.text = l[position].name
+        var user = listOfUsers[position]
+        holder.bind(user, activity)
+    }
+
+    fun setData(listOfUsers : List<User>){
+        this.listOfUsers = listOfUsers
+        notifyDataSetChanged()
     }
 
 }
