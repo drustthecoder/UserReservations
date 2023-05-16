@@ -36,23 +36,25 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, AddSportActivity::class.java))
         }
 
-        var userid = 1
+        val userSportRecyclerView = findViewById<RecyclerView>(R.id.userSportRecyclerView)
+        var userSportAdapter = UserSportAdapter(this)
+        userSportRecyclerView.adapter = userSportAdapter
+        userSportRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        var userid = 0
 
         currentUser.user.observe(this){
             userid = it.id!!
             Log.d("DEBUG", "userid is $userid")
+            val listOfUserSports = userSportViewModel.getAllUserSports(userid)
+            listOfUserSports.observe(this) {
+                userSportAdapter.setData(it!!)
+                Log.d("DEBUG", it.size.toString())
+            }
         }
 
-        val listOfUserSports = userSportViewModel.getAllUserSports(userid)
 
-        val userSportRecyclerView = findViewById<RecyclerView>(R.id.userSportRecyclerView)
-        var userSportAdapter = UserSportAdapter(this)
-        userSportRecyclerView.adapter = userSportAdapter
 
-        listOfUserSports.observe(this) {
-            userSportAdapter.setData(it!!)
-            Log.d("DEBUG", it.size.toString())
-        }
-        userSportRecyclerView.layoutManager = LinearLayoutManager(this)
+
     }
 }
