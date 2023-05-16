@@ -37,7 +37,9 @@
         android:layout_height="wrap_content"
         android:text="Your Sports:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userSportRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

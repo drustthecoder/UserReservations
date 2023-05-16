@@ -2,9 +2,12 @@ package it.polito.mad.userreservations
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import others.CurrentUser
 import tables.UserSport
@@ -27,6 +30,7 @@ class AddSportActivity : AppCompatActivity() {
 
         currentUser.user.observe(this){
             userid = it.id!!
+
         }
 
         val sportname = findViewById<EditText>(R.id.sportName)
@@ -44,6 +48,8 @@ class AddSportActivity : AppCompatActivity() {
             val userSport = userSportViewModel.addUserSport(newUserSport)
             finish()
         }
+
+
 
     }
 }
