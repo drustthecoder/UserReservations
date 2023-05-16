@@ -27,4 +27,10 @@ class UserViewModel(application: Application):AndroidViewModel(application) {
     fun getAllUsers() : LiveData<List<User>>{
         return userRepo.getAllUsers()
     }
+
+    fun getUserByFname(fname:String) : LiveData<User>{
+        return userRepo.getUserByFname(fname)
+    }
+
+
 }

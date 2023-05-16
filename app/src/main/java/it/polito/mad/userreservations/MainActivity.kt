@@ -10,21 +10,32 @@ import tables.User
 import viewModels.UserViewModel
 
 
-@AndroidEntryPoint
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var uservm : UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         uservm = ViewModelProvider(this)[UserViewModel::class.java]
 
-        uservm.addUser(User(null, "Shayan"))
-        uservm.addUser(User(null, "Shayan1"))
-        uservm.addUser(User(null, "Shayan2"))
-        uservm.addUser(User(null, "Shayan3"))
-        uservm.addUser(User(null, "Shayan4"))
-        uservm.addUser(User(null, "Shayan8"))
-        uservm.addUser(User(null, "Shayan9"))
+        // get user
+
+        //if not exists
+
+        //create user
+
+
+
+
+
+//        uservm.addUser(User(null, "Shayan"))
+//        uservm.addUser(User(null, "Shayan1"))
+//        uservm.addUser(User(null, "Shayan2"))
+//        uservm.addUser(User(null, "Shayan3"))
+//        uservm.addUser(User(null, "Shayan4"))
+//        uservm.addUser(User(null, "Shayan8"))
+//        uservm.addUser(User(null, "Shayan9"))
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

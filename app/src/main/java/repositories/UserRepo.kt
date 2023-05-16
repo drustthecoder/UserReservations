@@ -12,4 +12,8 @@ class UserRepo (val userDao: UserDao) {
     fun getAllUsers() : LiveData<List<User>> {
         return userDao.getAllUsers()
     }
+
+    fun getUserByFname(fname:String):LiveData<User>{
+        return userDao.getUserByFname(fname)
+    }
 }
