@@ -36,9 +36,13 @@ class UserSportAdapter(private val activity: ProfileActivity): RecyclerView.Adap
 
 class UserSportViewHolder(v: View): RecyclerView.ViewHolder(v){
     private val usersportname: TextView = v.findViewById(R.id.usersportname)
+    private val usersportlevel: TextView = v.findViewById((R.id.usersportlevel))
+    private val usersportachievements: TextView = v.findViewById(R.id.usersportachievements)
 
     fun bind(userSport : UserSport, activity: ProfileActivity){
         usersportname.text = userSport.sportName
+        usersportlevel.text = userSport.level
+        usersportachievements.text = userSport.achievements
 //        tv.text = user.fullName
 //        btn.setOnClickListener{
 //            val reservationsIntent = Intent(activity, MainActivity::class.java)

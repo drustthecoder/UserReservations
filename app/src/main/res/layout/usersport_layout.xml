@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
 
     >
 
-
-
     <TextView
         android:id="@+id/usersportname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="default usersport text"
+        android:text="Soccer"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-
-
-
+    <TextView
+        android:id="@+id/usersportlevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Beginner"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+    <TextView
+        android:id="@+id/usersportachievements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Played 100 hours!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:paddingBottom="16dp"
+        />
 
 </LinearLayout>

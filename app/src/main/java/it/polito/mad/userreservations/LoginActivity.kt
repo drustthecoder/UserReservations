@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import others.CurrentUser
@@ -25,13 +26,13 @@ class LoginActivity : AppCompatActivity() {
         val userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         // create a user if no user exists
-        val user = userViewModel.getUserByFname("Shayan")
-        user.observe(this){
-            if (it == null)
-            {
-                userViewModel.addUser(User(null, "Shayan"))
-            }
-        }
+//        val user = userViewModel.getUserByFname("Shayan")
+//        user.observe(this){
+//            if (it == null)
+//            {
+//                userViewModel.addUser(User(null, "Shayan"))
+//            }
+//        }
 
 
         val fname = findViewById<EditText>(R.id.fname)
@@ -44,6 +45,9 @@ class LoginActivity : AppCompatActivity() {
                 {
                     currentUser.setUser(it)
                     startActivity(Intent(this, MainActivity::class.java))
+                }
+                else{
+                    Toast.makeText(applicationContext, "User does not exist", Toast.LENGTH_SHORT).show()
                 }
             }
         }
