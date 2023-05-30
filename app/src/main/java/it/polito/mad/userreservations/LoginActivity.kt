@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import others.CurrentUser
 import tables.User
@@ -16,6 +18,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
+
+
     @Inject
     lateinit var currentUser : CurrentUser
 
@@ -24,14 +28,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
-
-        // create a user if no user exists
-
-
-
         val fname = findViewById<EditText>(R.id.fname)
         val loginBtn = findViewById<Button>(R.id.loginBtn)
-
         loginBtn.setOnClickListener {
             val user = userViewModel.getUserByFname(fname.text.toString())
             user.observe(this){

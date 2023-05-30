@@ -14,12 +14,16 @@ class ReservationsActivity : AppCompatActivity() {
 
         val modifyBtn = findViewById<Button>(R.id.modifyBtn)
         val deleteBtn = findViewById<Button>(R.id.deleteBtn)
+        val reviewBtn = findViewById<Button>(R.id.reviewBtn)
 
         modifyBtn.setOnClickListener(){
             startActivity(Intent(this, ModifyActivity::class.java))
         }
         deleteBtn.setOnClickListener(){
             startActivity(Intent(this, DeleteActivity::class.java))
+        }
+        reviewBtn.setOnClickListener(){
+            startActivity(Intent(this, ReviewActivity::class.java))
         }
     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "15824336591",
+    "project_id": "userreservation-f3c83",
+    "storage_bucket": "userreservation-f3c83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15824336591:android:ad7f8dcf06aef3e74a29ba",
+        "android_client_info": {
+          "package_name": "it.polito.mad.userreservations"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_f8NmzErsE0vKeQsUIOPfwG98amPw-gk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
